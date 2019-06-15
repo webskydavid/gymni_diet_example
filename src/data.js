@@ -1,12 +1,12 @@
-import { WEEKDAYS } from "./vars";
+import { WEEKDAYS } from './vars';
 
 const data = {
   lastModified: Date.now() - 10000,
   macro: {
     kcal: 0,
-    protein: 160,
-    fat: 65,
-    carbohydrate: 220
+    p: 160,
+    f: 65,
+    c: 220
   },
   selectedDays: {
     ...WEEKDAYS.reduce((a, v) => {
@@ -17,29 +17,20 @@ const data = {
     }, {})
   },
   config: {
-    planDuration: "2",
-    duretionType: "weeks",
+    planDuration: '2',
+    duretionType: 'weeks',
     numberOfMeals: 4,
     defaultTimes: [700, 1100, 1600, 2030]
   },
-  product: [
-    { id: 1, name: "Egg", p: 1, f: 2, c: 3 },
-    { id: 2, name: "Meat", p: 20, f: 2, c: 3 }
-  ],
-  recipe: [
-    {
-      id: 1,
-      productIds: [1, 2, 3, 4],
-      name: "Test 1",
-      macro: { p: 30, f: 5, c: 80, kcal: 700 }
-    },
-    {
-      id: 2,
-      productIds: [1, 2, 3, 4],
-      name: "Test 2",
-      macro: { p: 30, f: 5, c: 80, kcal: 700 }
-    }
-  ],
+  product: {
+    ids: [],
+    items: {}
+  },
+  recipe: {
+    ids: [],
+    items: {},
+    macro: {}
+  },
   plan: {
     mo: {
       700: {
@@ -55,14 +46,14 @@ const data = {
   }
 };
 
-//localStorage.setItem("diet", JSON.stringify(data));
+//localStorage.setItem('diet', JSON.stringify(data));
 
 const events = [
   {
-    id: "int",
-    type: "string",
-    startDate: "timestamp",
-    endDate: "timestamp"
+    id: 'int',
+    type: 'string',
+    startDate: 'timestamp',
+    endDate: 'timestamp'
   }
 ];
 
@@ -84,16 +75,16 @@ const schedule = {
     1: [
       // grid[2].day -> events by day
       {
-        id: "int", //
-        type: "string",
-        startDate: "timestamp",
-        endDate: "timestamp"
+        id: 'int', //
+        type: 'string',
+        startDate: 'timestamp',
+        endDate: 'timestamp'
       },
       {
-        id: "int", //
-        type: "string",
-        startDate: "timestamp",
-        endDate: "timestamp"
+        id: 'int', //
+        type: 'string',
+        startDate: 'timestamp',
+        endDate: 'timestamp'
       }
       // ...
       //
@@ -106,13 +97,13 @@ const data1 = {
   schedule: {
     custom: {},
     default: /* calendar name */ {
-      "01052019": {
+      '01052019': {
         events: [
           {
-            id: "int",
-            type: "string",
-            startDate: "timestamp",
-            endDate: "timestamp"
+            id: 'int',
+            type: 'string',
+            startDate: 'timestamp',
+            endDate: 'timestamp'
           }
 
           // ...
@@ -121,9 +112,9 @@ const data1 = {
           1000: {
             workout: {
               exercise: [
-                { name: "string" },
-                { name: "string" },
-                { name: "string" }
+                { name: 'string' },
+                { name: 'string' },
+                { name: 'string' }
               ]
             }
           },
@@ -133,7 +124,7 @@ const data1 = {
         },
         diet: [{ time: 1000 }]
       },
-      "02052019": {}
+      '02052019': {}
     }
   }
 };

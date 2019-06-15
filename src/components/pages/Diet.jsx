@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
-import { WEEKDAYS } from "./vars";
-import { Context } from "./storage/Store";
+import React, { useContext } from 'react';
+import { WEEKDAYS } from '../../vars';
+import { Context } from '../../storage/Store';
+
+import CalcForm from '../CalcForm';
+import Weekdays from '../Weekdays';
 
 const Products = () => {
-  const { handleClickProduct, handleDayForProduct, product } = useContext(
-    Context
-  );
+  const { handleDayForProduct } = useContext(Context);
   const buildHead = list => {
     return list.map((item, index) => {
       return (
@@ -21,10 +22,20 @@ const Products = () => {
       );
     });
   };
+
   return (
     <div>
+      <>
+        <div col="2/4">
+          <CalcForm />
+        </div>
+        <div col="1/4">
+          <Weekdays />
+        </div>
+      </>
+      <hr />
       <div col="5/6">
-        <table style={{ width: "100%" }}>
+        <table style={{ width: '100%' }}>
           <thead>
             <tr>{buildHead(WEEKDAYS)}</tr>
           </thead>

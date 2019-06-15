@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import { Context } from "./storage/Store";
-import { WEEKDAYS } from "./vars";
+import React, { useContext } from 'react';
+import { Context } from '../storage/Store';
+import { WEEKDAYS } from '../vars';
 
 const Weekdays = () => {
-  const { selectedDays, handleChangeDays } = useContext(Context);
+  const { selectedDays, changeDays } = useContext(Context);
 
   return (
-    <grid>
+    <>
       <div col="1/1">
         <h5 mb="0">Training days</h5>
       </div>
@@ -14,12 +14,12 @@ const Weekdays = () => {
         <div>
           {WEEKDAYS.map((day, i) => {
             return (
-              <div class="days" key={day}>
+              <div className="days" key={day}>
                 <input
                   checked={selectedDays[day]}
                   type="checkbox"
                   name={day}
-                  onChange={handleChangeDays}
+                  onChange={changeDays}
                   mt="0"
                 />
                 <label mt="0">{day}</label>
@@ -28,7 +28,7 @@ const Weekdays = () => {
           })}
         </div>
       </div>
-    </grid>
+    </>
   );
 };
 
